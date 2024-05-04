@@ -1,0 +1,41 @@
+<div class="user-wrapper">
+  <div class="user-form">
+    <h1>ログイン</h1>
+
+    <%= form_with model: @user, as: resource_name, url: session_path(resource_name), local: true, class: 'form' do |f| %>
+
+      <% if alert.present? %>
+        <div id="error_explanation">
+          <h2>エラー:</h2>          
+          <ul>
+            <li><%= alert %></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス（必須）:' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'パスワード（必須）:' %>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-input' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+      <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <% end %>
+
+      <div class="form-submit">
+        <%= f.submit 'ログインする', class: 'form-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

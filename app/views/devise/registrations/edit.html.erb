@@ -1,0 +1,31 @@
+<div class="user-wrapper">
+  <div class="user-form">
+    <h2>マイページ編集</h2>
+
+    <%= form_with model: resource, url: registration_path(resource_name), local: true, method: :put, class: 'form' do |f| %>
+      <div class="form-group">
+        <%= f.label :email, 'メールアドレス（必須）:' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'パスワード:' %>
+        <%= f.password_field :password, autocomplete: 'new-password', placeholder: '空欄のままなら変更しません', class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, 'パスワード確認:' %>
+        <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-input' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, '現在のパスワード（必須）:'  %>
+        <%= f.password_field :current_password, autocomplete: 'current-password', placeholder: '変更を反映するには現在のパスワードを入力してください', class: 'form-input' %>
+      </div>
+
+      <div class="form-submit">
+        <%= f.submit '更新する', class: 'form-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
