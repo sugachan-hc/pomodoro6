@@ -256,4 +256,4 @@ window.onload = function () {
 };
 
 //for debug
-openSettings();
+// openSettings();
