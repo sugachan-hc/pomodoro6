@@ -1,38 +1,14 @@
 class SettingsController < ApplicationController
   def update
     @setting = Setting.find(params[:id])
-    binding.pry
 
     if @setting && @setting.user_id == current_user.id
       @setting.assign_attributes(setting_params)
     else
-      binding.pry
       @setting = Setting.new(setting_params)
       @setting.user = current_user
     end
   
-    if @setting.save
-      redirect_to root_path, notice: "登録しました"
-    else
-      redirect_to root_path, alert: "更新に失敗しました"
-    end
-  end
-
-  def Oldupdate
-    if current_user
-      @setting = Setting.find_by(id: current_user.id)
-      unless @setting
-        @setting = Setting.first
-        @setting.id = current_user.id
-        @setting.save!
-      end
-    else
-      @setting = Setting.first
-    end
-
-    # binding.pry
-
-    @setting.assign_attributes(setting_params)
     if @setting.save
       redirect_to root_path, notice: "登録しました"
     else
