@@ -23,10 +23,8 @@ const modeEl = getElement('mode');
 const checkbox = document.getElementById('flexSwitchCheckChecked');
 const messageCheckbox = document.getElementById('messageCheckbox');
 
-// check later この変数名見直せ
-const button01 = document.getElementById("button01");
-button01.addEventListener("click", function () {
-  console.log("messageCheckbox.value:", messageCheckbox.value);
+const playButton = document.getElementById("play-button");
+playButton.addEventListener("click", function () {
   if (messageCheckbox.checked) {
     createText()
   }
@@ -131,7 +129,6 @@ function stop() {
 function setImage() {
   let bgImage;
   let selectedOption = document.querySelector('input[name="setting[theme]"]:checked').id;
-  console.log("Selected option:", selectedOption);
 
   switch (selectedOption) {
     case 'option1': bgImage = 'option1.jpg'; break;
@@ -142,7 +139,6 @@ function setImage() {
 
   localStorage.setItem('bgImage', bgImage);
   document.body.style.backgroundImage = `url(${bgImage})`;
-  console.log("pic:", document.body.style.backgroundImage);
 }
 
 // DOM要素の値を取得
