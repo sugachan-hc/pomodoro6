@@ -1,8 +1,14 @@
+/* Devise */
 .user-wrapper {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.user-authentication {
+  display: flex;
+  justify-content: space-between;
 }
 
 .user-form {
@@ -16,6 +22,7 @@
   font-size: 1.5rem;
 }
 
+/* Error */
 #error_explanation h2 {
   font-size: 1rem;
   font-weight: bold;
