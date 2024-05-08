@@ -43,7 +43,7 @@
             <%= f.label :long_break_minute, '長い休憩時間：' %>
             <%= f.number_field :long_break_minute, class: 'form-input', min: 0, max: 99, step: 1 %>
             <%= f.label :long_break_minute, '分' %>
-            <%= f.number_field :long_break_minute, class: 'form-input', min: 0, max: 99, step: 1 %>
+            <%= f.number_field :long_break_second, class: 'form-input', min: 0, max: 99, step: 1 %>
             <%= f.label :long_break_second, '秒' %>
           </div>
           <%= f.label :work_interval, '長い休憩まで作業(ポモドーロ)回数' %>
@@ -59,7 +59,7 @@
 
         <div class="form-group form-check form-switch form-check-reverse">
           <%= f.label :sound_notification, '通知音', class: "form-check-label" %>
-          <%= f.check_box :sound_notification, { class: "form-check-input", role: "switch", id: "flexSwitchCheckChecked" } %>
+          <%= f.check_box :sound_notification, { class: "form-check-input", role: "switch"} %>
         </div>
 
         <div class="accordion accordion-flush" id="accordionFlushExample">

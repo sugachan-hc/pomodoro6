@@ -19,19 +19,25 @@ const timerTitle = getElement('timerTitle');
 const circle = getElement('circle');
 const modeEl = getElement('mode');
 
-// check later この変数名見直せ
-const checkbox = document.getElementById('flexSwitchCheckChecked');
-const messageCheckbox = document.getElementById('messageCheckbox');
+const automaticWorkStart = document.getElementById('setting_automatic_work_start');
+const automaticBreakStart = document.getElementById('setting_automatic_break_start');
+const soundNotification = document.getElementById('setting_sound_notification');
+const displayMessage = document.getElementById('setting_display_message');
 
 const playButton = document.getElementById("play-button");
 playButton.addEventListener("click", function () {
-  if (messageCheckbox.checked) {
-    createText()
+  const circle = document.getElementById("circle");
+  const angle = circle.style.getPropertyValue("--angle");
+  const color = circle.style.getPropertyValue("--color");
+
+  if (angle === "360deg" && color === "red") {
+    createText();
   }
+
 }, false);
 
 updateCountdown(time);
-timerTitle.innerText = "Simple Pomodoro Timer"; //追加
+timerTitle.innerText = "Simple Pomodoro Timer";
 
 // 関数
 function countdown(pTime) {
@@ -72,8 +78,17 @@ function swapMode() {
 function updateCountdown(pTime) {
   if (pTime <= 0) {
     circle.style.setProperty('--angle', '360deg');
-    if (checkbox.checked) {
+    if (soundNotification.checked) {
       document.getElementById('btn_audio').play();
+    }
+
+    // 休憩時間になったら自動で開始する:ON
+    if (!automaticWorkStart.checked && currentMode == "Work") {
+      // pause();
+    }
+    // 作業時間になったら自動で開始する:ON
+    if (!automaticBreakStart.checked && currentMode != "Work") {
+      // pause();
     }
   } else {
     let color;
@@ -82,9 +97,11 @@ function updateCountdown(pTime) {
     if (currentMode == "Work") {
       color = "red";
       angle = (pTime / pomodoro * 360) + 'deg';
+
     } else if (currentMode == "Rest") {
       color = "blue";
       angle = (pTime / shortBreak * 360) + 'deg';
+
     } else {
       color = "green";
       angle = (pTime / longBreak * 360) + 'deg';
@@ -129,6 +146,7 @@ function stop() {
 function setImage() {
   let bgImage;
   let selectedOption = document.querySelector('input[name="setting[theme]"]:checked').id;
+  console.log("Selected option:", selectedOption);
 
   switch (selectedOption) {
     case 'option1': bgImage = 'option1.jpg'; break;
@@ -139,6 +157,7 @@ function setImage() {
 
   localStorage.setItem('bgImage', bgImage);
   document.body.style.backgroundImage = `url(${bgImage})`;
+  console.log("pic:", document.body.style.backgroundImage);
 }
 
 // DOM要素の値を取得
@@ -185,6 +204,7 @@ function closeSettings() {
 function openSettings() {
   let settingsList = document.querySelectorAll('.settings-list')[0];
   settingsList.style.right = "0";
+  console.log("Open: window.innerWidth: ", window.innerWidth);
 }
 
 // 応援メッセージを動的に作成する
@@ -205,6 +225,9 @@ async function createText() {
     transform: translateY(-50%);
     z-index: 9999;
     color: white;
+    font-family: "Hachi Maru Pop", cursive;
+    font-weight: 400;
+    font-style: normal;
   `;
 
   divText.textContent = messages[Math.floor(Math.random() * messages.length)];
@@ -252,4 +275,6 @@ window.onload = function () {
 };
 
 //for debug
-// openSettings();
+openSettings();
+
+
