@@ -13,20 +13,24 @@ function getElement(id) {
   return document.getElementById(id);
 }
 
+function getElementValue(id) {
+  return document.getElementById(id).value;
+}
+
 // DOM 
 const timer = getElement('timer');
 const timerTitle = getElement('timerTitle');
 const circle = getElement('circle');
 const modeEl = getElement('mode');
 
-const automaticWorkStart = document.getElementById('setting_automatic_work_start');
-const automaticBreakStart = document.getElementById('setting_automatic_break_start');
-const soundNotification = document.getElementById('setting_sound_notification');
-const displayMessage = document.getElementById('setting_display_message');
+const automaticWorkStart = getElement('setting_automatic_work_start');
+const automaticBreakStart = getElement('setting_automatic_break_start');
+const soundNotification = getElement('setting_sound_notification');
+const displayMessage = getElement('setting_display_message');
 
-const playButton = document.getElementById("play-button");
+const playButton = getElement("play-button");
 playButton.addEventListener("click", function () {
-  const circle = document.getElementById("circle");
+  const circle = getElement("circle");
   const angle = circle.style.getPropertyValue("--angle");
   const color = circle.style.getPropertyValue("--color");
 
@@ -79,7 +83,7 @@ function updateCountdown(pTime) {
   if (pTime <= 0) {
     circle.style.setProperty('--angle', '360deg');
     if (soundNotification.checked) {
-      document.getElementById('btn_audio').play();
+      getElement('btn_audio').play();
     }
 
     // 休憩時間になったら自動で開始する:ON
@@ -156,11 +160,6 @@ function setImage() {
 
   localStorage.setItem('bgImage', bgImage);
   document.body.style.backgroundImage = `url(${bgImage})`;
-}
-
-// DOM要素の値を取得
-function getElementValue(id) {
-  return document.getElementById(id).value;
 }
 
 // 設定反映
