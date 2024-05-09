@@ -1,7 +1,7 @@
 // 変数
 let pomodoro = 25 * 60 * 1000;  //1ポモドーロの長さ(デフォルト)
 let shortBreak = 5 * 60 * 1000; //短時間休憩(デフォルト)
-let longBreak = 15 * 60 * 1000;
+let longBreak = 15 * 60 * 1000; //長時間休憩(デフォルト)
 let longBreakInterval = 4;
 let currentMode = "Work";
 
@@ -84,11 +84,11 @@ function updateCountdown(pTime) {
 
     // 休憩時間になったら自動で開始する:ON
     if (!automaticWorkStart.checked && currentMode == "Work") {
-      // pause();
+      pause();
     }
     // 作業時間になったら自動で開始する:ON
     if (!automaticBreakStart.checked && currentMode != "Work") {
-      // pause();
+      pause();
     }
   } else {
     let color;
@@ -146,7 +146,6 @@ function stop() {
 function setImage() {
   let bgImage;
   let selectedOption = document.querySelector('input[name="setting[theme]"]:checked').id;
-  console.log("Selected option:", selectedOption);
 
   switch (selectedOption) {
     case 'option1': bgImage = 'option1.jpg'; break;
@@ -157,7 +156,6 @@ function setImage() {
 
   localStorage.setItem('bgImage', bgImage);
   document.body.style.backgroundImage = `url(${bgImage})`;
-  console.log("pic:", document.body.style.backgroundImage);
 }
 
 // DOM要素の値を取得
@@ -204,7 +202,6 @@ function closeSettings() {
 function openSettings() {
   let settingsList = document.querySelectorAll('.settings-list')[0];
   settingsList.style.right = "0";
-  console.log("Open: window.innerWidth: ", window.innerWidth);
 }
 
 // 応援メッセージを動的に作成する
