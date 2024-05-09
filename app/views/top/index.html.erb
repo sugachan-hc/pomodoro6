@@ -18,7 +18,7 @@
       <i class="fa-solid fa-2x fa-xmark close"></i>
       <%= form_with model: @setting, local: true, class: 'form', method: :patch do |f| %>
         <div class="form-group">
-          <%= f.label :work_minute, '１作業（１ポモドーロ）の長さ：' %>
+          <%= f.label :work_minute, '１作業の長さ：' %>
           <%= f.number_field :work_minute, class: 'form-input', min: 0, max: 99, step: 1 %>
           <%= f.label :work_minute, '分' %>
           <%= f.number_field :work_second, class: 'form-input', min: 0, max: 99, step: 1 %>
