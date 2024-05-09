@@ -148,7 +148,14 @@ body {
   background-color: white;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   transition: 0.5s right;
-  overflow-y: auto;
+  overflow-y: scroll; //スクロールバー常時表示で適用ボタンのガタツキを防止
+}
+
+@media (max-width: 768px) {
+  .settings-list {
+    width: 90vw;
+    right: -90vw;
+  }
 }
 
 .settings-list .close {

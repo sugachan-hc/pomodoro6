@@ -3,6 +3,8 @@
     <h2>マイページ編集</h2>
 
     <%= form_with model: resource, url: registration_path(resource_name), local: true, method: :put, class: 'form' do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
       <div class="form-group">
         <%= f.label :email, 'メールアドレス（必須）:' %>
         <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-input' %>
