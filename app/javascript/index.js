@@ -197,6 +197,11 @@ function applySettings() {
 function closeSettings() {
   let settingsList = document.querySelectorAll('.settings-list')[0];
   settingsList.style.right = "-33vw";
+  let width = window.innerWidth; // 現在のウィンドウの幅を取得
+  if (width > 768) {
+    width = width / 3
+  }
+  settingsList.style.right = `-${width}px`; // 現在のウィンドウの幅分だけ右に移動
 }
 
 function openSettings() {
@@ -272,6 +277,6 @@ window.onload = function () {
 };
 
 //for debug
-openSettings();
+// openSettings();
 
 
