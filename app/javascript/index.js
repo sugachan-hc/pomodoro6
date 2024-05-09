@@ -187,8 +187,8 @@ function applySettings() {
   numberWorkIntervals = longBreakInterval;
   time = pomodoro;
 
-  // 背景画像セット
   setImage();
+  closeSettings();
 
   clearInterval(interval);
   updateCountdown(time);
