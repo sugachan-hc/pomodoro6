@@ -58,11 +58,12 @@ function countdown(pTime) {
 }
 
 function swapMode() {
+  console.log("numberWorkIntervals: ", numberWorkIntervals);
+  console.log("currentMode: ", currentMode);
   if (currentMode == "Work") {
     if (numberWorkIntervals == 0) {
       currentMode = "LongRest";
       time = longBreak;
-
     } else {
       currentMode = "Rest";
       time = shortBreak;
@@ -71,7 +72,13 @@ function swapMode() {
     currentMode = "Work";
     time = pomodoro;
   } else if (currentMode == "LongRest") {
-    currentMode = "Work";
+    if (numberWorkIntervals == 0) {
+      currentMode = "LongRest";
+
+    } else {
+      currentMode = "Work";
+    }
+
     time = pomodoro;
     numberWorkIntervals = longBreakInterval;
   }
@@ -97,7 +104,7 @@ function updateCountdown(pTime) {
   } else {
     let color;
     let angle;
-
+    console.log("next currentMode", currentMode);
     if (currentMode == "Work") {
       color = "red";
       angle = (pTime / pomodoro * 360) + 'deg';
@@ -106,9 +113,9 @@ function updateCountdown(pTime) {
       color = "blue";
       angle = (pTime / shortBreak * 360) + 'deg';
 
-    } else {
+    } else if (currentMode == "LongRest") {
       color = "green";
-      angle = (pTime / longBreak * 360) + 'deg';
+      angle = (pTime / pomodoro * 360) + 'deg';
     }
 
     circle.style.setProperty('--angle', angle);
@@ -191,6 +198,8 @@ function applySettings() {
 
   clearInterval(interval);
   updateCountdown(time);
+
+  console.log("show popup");
 }
 
 function closeSettings() {
@@ -198,7 +207,7 @@ function closeSettings() {
   settingsList.style.right = "-33vw";
   let width = window.innerWidth; // 現在のウィンドウの幅を取得
   if (width > 768) {
-    width = width / 3
+    width = width / 3;
   }
   settingsList.style.right = `-${width}px`; // 現在のウィンドウの幅分だけ右に移動
 }
@@ -271,11 +280,9 @@ window.onload = function () {
   });
 
   // 画面ロードした際に実行したい関数
-  setImage();
+  // setImage();
   applySettings();
 };
 
 //for debug
 // openSettings();
-
-
