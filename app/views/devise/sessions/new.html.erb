@@ -6,7 +6,7 @@
 
       <% if alert.present? %>
         <div id="error_explanation">
-          <h2>エラー:</h2>          
+          <h2>エラー:</h2>
           <ul>
             <li><%= alert %></li>
           </ul>
@@ -34,6 +34,7 @@
         <%= f.submit 'ログインする', class: 'btn btn-secondary' %>
       </div>
     <% end %>
+    <%= link_to '戻る', 'javascript:history.back()', class: 'back' %>
   </div>
 </div>
 

@@ -5,6 +5,9 @@ body {
   min-height: 100vh;
   width: 100vw;
   overflow: hidden;
+  font-family: "Yomogi", cursive;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .main {
@@ -145,7 +148,14 @@ body {
   background-color: white;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   transition: 0.5s right;
-  overflow-y: auto;
+  overflow-y: scroll; //スクロールバー常時表示で適用ボタンのガタツキを防止
+}
+
+@media (max-width: 768px) {
+  .settings-list {
+    width: 90vw;
+    right: -90vw;
+  }
 }
 
 .settings-list .close {
@@ -206,4 +216,28 @@ body {
 .btn {
   display: block;
   margin: 0 auto;
+}
+
+/* サブメニュー画面（スイッチ部） */
+.form-switch .form-check-input:checked {
+  background-color: green;
+  border-color: green;
+}
+
+.form-switch .form-check-input {
+  border-color: gray;
+  color: gray;
+}
+
+.form-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem lightgray;
+}
+
+/* サブメニュー画面（アコーディオンヘッダー部） */
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+}
+
+.accordion-item:focus-within .accordion-button {
+  box-shadow: none;
 }

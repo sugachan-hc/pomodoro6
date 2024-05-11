@@ -1,7 +1,7 @@
 // 変数
 let pomodoro = 25 * 60 * 1000;  //1ポモドーロの長さ(デフォルト)
 let shortBreak = 5 * 60 * 1000; //短時間休憩(デフォルト)
-let longBreak = 15 * 60 * 1000;
+let longBreak = 15 * 60 * 1000; //長時間休憩(デフォルト)
 let longBreakInterval = 4;
 let currentMode = "Work";
 
@@ -13,25 +13,35 @@ function getElement(id) {
   return document.getElementById(id);
 }
 
+function getElementValue(id) {
+  return document.getElementById(id).value;
+}
+
 // DOM 
 const timer = getElement('timer');
 const timerTitle = getElement('timerTitle');
 const circle = getElement('circle');
 const modeEl = getElement('mode');
 
-// check later この変数名見直せ
-const checkbox = document.getElementById('flexSwitchCheckChecked');
-const messageCheckbox = document.getElementById('messageCheckbox');
+const automaticWorkStart = getElement('setting_automatic_work_start');
+const automaticBreakStart = getElement('setting_automatic_break_start');
+const soundNotification = getElement('setting_sound_notification');
+const displayMessage = getElement('setting_display_message');
 
-const playButton = document.getElementById("play-button");
+const playButton = getElement("play-button");
 playButton.addEventListener("click", function () {
-  if (messageCheckbox.checked) {
-    createText()
+  const circle = getElement("circle");
+  const angle = circle.style.getPropertyValue("--angle");
+  const color = circle.style.getPropertyValue("--color");
+
+  if (angle === "360deg" && color === "red") {
+    createText();
   }
+
 }, false);
 
 updateCountdown(time);
-timerTitle.innerText = "Simple Pomodoro Timer"; //追加
+timerTitle.innerText = "Simple Pomodoro Timer";
 
 // 関数
 function countdown(pTime) {
@@ -72,8 +82,17 @@ function swapMode() {
 function updateCountdown(pTime) {
   if (pTime <= 0) {
     circle.style.setProperty('--angle', '360deg');
-    if (checkbox.checked) {
-      document.getElementById('btn_audio').play();
+    if (soundNotification.checked) {
+      getElement('btn_audio').play();
+    }
+
+    // 休憩時間になったら自動で開始する:ON
+    if (!automaticWorkStart.checked && currentMode == "Work") {
+      pause();
+    }
+    // 作業時間になったら自動で開始する:ON
+    if (!automaticBreakStart.checked && currentMode != "Work") {
+      pause();
     }
   } else {
     let color;
@@ -82,9 +101,11 @@ function updateCountdown(pTime) {
     if (currentMode == "Work") {
       color = "red";
       angle = (pTime / pomodoro * 360) + 'deg';
+
     } else if (currentMode == "Rest") {
       color = "blue";
       angle = (pTime / shortBreak * 360) + 'deg';
+
     } else {
       color = "green";
       angle = (pTime / longBreak * 360) + 'deg';
@@ -141,11 +162,6 @@ function setImage() {
   document.body.style.backgroundImage = `url(${bgImage})`;
 }
 
-// DOM要素の値を取得
-function getElementValue(id) {
-  return document.getElementById(id).value;
-}
-
 // 設定反映
 function applySettings() {
   // DOM
@@ -170,8 +186,8 @@ function applySettings() {
   numberWorkIntervals = longBreakInterval;
   time = pomodoro;
 
-  // 背景画像セット
   setImage();
+  closeSettings();
 
   clearInterval(interval);
   updateCountdown(time);
@@ -180,6 +196,11 @@ function applySettings() {
 function closeSettings() {
   let settingsList = document.querySelectorAll('.settings-list')[0];
   settingsList.style.right = "-33vw";
+  let width = window.innerWidth; // 現在のウィンドウの幅を取得
+  if (width > 768) {
+    width = width / 3
+  }
+  settingsList.style.right = `-${width}px`; // 現在のウィンドウの幅分だけ右に移動
 }
 
 function openSettings() {
@@ -205,6 +226,9 @@ async function createText() {
     transform: translateY(-50%);
     z-index: 9999;
     color: white;
+    font-family: "Hachi Maru Pop", cursive;
+    font-weight: 400;
+    font-style: normal;
   `;
 
   divText.textContent = messages[Math.floor(Math.random() * messages.length)];
@@ -253,3 +277,5 @@ window.onload = function () {
 
 //for debug
 // openSettings();
+
+
