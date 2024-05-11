@@ -1,4 +1,5 @@
-t on error
+#!/usr/bin/env bash
+# exit on error
 set -o errexit
 
 echo "render-bulid.sh: start"
@@ -12,5 +13,8 @@ bundle exec rake assets:clean
 
 echo "executing migrate"
 bundle exec rails db:migrate
+
+echo "executing seed"
+bundle exec rails db:seed
 
 echo "render-build.sh: done"
