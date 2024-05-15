@@ -41,7 +41,8 @@ body {
   width: 100%;
 }
 
-.notice {
+.notice,
+.notice-no-login {
   position: absolute;
   top: 16px;
   left: 50%;
@@ -52,6 +53,10 @@ body {
   color: white;
   background-color: gray;
   border-color: gray;
+}
+
+.notice-no-login {
+  display: none;
 }
 
 /* メイン画面(全体) */

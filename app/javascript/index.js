@@ -198,8 +198,6 @@ function applySettings() {
 
   clearInterval(interval);
   updateCountdown(time);
-
-  console.log("show popup");
 }
 
 function closeSettings() {
@@ -283,6 +281,20 @@ window.onload = function () {
   // setImage();
   applySettings();
 };
+
+// 適用ボタン(DB更新なし)押下時、Flashを表示する
+const applyButton = getElement('apply-button');
+const noticeNoLogin = document.getElementById('notice-no-login');
+
+applyButton.addEventListener('click', () => {
+  noticeNoLogin.style.display = "block";
+
+  setTimeout(() => {
+    $(noticeNoLogin).fadeOut('slow', function () {
+      $(this).hide();
+    });
+  }, 8000);
+});
 
 //for debug
 // openSettings();

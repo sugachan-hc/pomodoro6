@@ -24,7 +24,13 @@
   </head>
 
   <body class="bg-image">
-    <div class="flash-box"><%= render 'shared/flash-message' %></div>
+    <div class="flash-box">
+      <div id="notice-no-login" class="notice-no-login">
+        <p>適用しました。</p>
+      </div>
+      <%= render 'shared/flash-message' %>
+    </div>
+
     <%= yield %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
