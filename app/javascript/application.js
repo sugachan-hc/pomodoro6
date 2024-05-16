@@ -2,5 +2,5 @@ import jquery from "jquery"
 window.$ = jquery
 
 $(function () {
-  $('.notice').fadeOut(8000);  //8秒かけて消えていく
+  $('.notice').fadeOut(5000);  //5秒かけて消えていく
 });

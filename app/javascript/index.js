@@ -282,7 +282,7 @@ window.onload = function () {
   applySettings();
 };
 
-// 適用ボタン(DB更新なし)押下時、Flashを表示する
+// 追加: 適用ボタン(DB更新なし)押下時、Flashを表示する
 const applyButton = getElement('apply-button');
 const noticeNoLogin = document.getElementById('notice-no-login');
 
@@ -293,7 +293,7 @@ applyButton.addEventListener('click', () => {
     $(noticeNoLogin).fadeOut('slow', function () {
       $(this).hide();
     });
-  }, 8000);
+  }, 5000);
 });
 
 //for debug
