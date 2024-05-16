@@ -1,4 +1,4 @@
-<body>
+<div>
   <div class="main">
     <div class="top">
       <div id="timer" class="timer">00:00</div>
@@ -62,7 +62,7 @@
 
         <div class="form-group form-check form-switch form-check-reverse">
           <%= f.label :sound_notification, '通知音', class: "form-check-label" %>
-          <%= f.check_box :sound_notification, { class: "form-check-input", role: "switch"} %>
+          <%= f.check_box :sound_notification, { class: "form-check-input", role: "switch" } %>
         </div>
 
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -76,16 +76,16 @@
               <div class="accordion-body">
                 <div class="form-group">
                   <%= f.label :start_message1, '応援メッセージ１：' %>
-                  <%= f.text_field :start_message1, autocomplete: 'start_message1', class: 'form-input', id: 'start_message1' %>
+                  <%= f.text_field :start_message1, class: 'form-input' %>
                   <%= f.label :start_message2, '応援メッセージ２：' %>
-                  <%= f.text_field :start_message2, autocomplete: 'start_message2', class: 'form-input', id: 'start_message2' %>
+                  <%= f.text_field :start_message2, class: 'form-input' %>
                   <%= f.label :start_message3, '応援メッセージ３：' %>
-                  <%= f.text_field :start_message3, autocomplete: 'start_message3', class: 'form-input', id: 'start_message3' %>
+                  <%= f.text_field :start_message3, class: 'form-input' %>
                 </div>
 
                 <div class="form-group form-check form-switch form-check-reverse">
                   <%= f.label :display_message, '応援メッセージを表示', class: "form-check-label" %>
-                  <%= f.check_box :display_message, { class: "form-check-input", role: "switch", id: "messageCheckbox" } %>
+                  <%= f.check_box :display_message, { class: "form-check-input", role: "switch"} %>
                 </div>
               </div>
             </div>
@@ -97,19 +97,19 @@
           <div>
             <%= f.radio_button :theme, 'option1.jpg', id: 'option1' %>
             <%= label_tag 'option1' do %>
-              <%= image_tag 'option1.jpg', alt: 'XX' %>
+              <%= image_tag 'option1.jpg', alt: 'デフォルトの背景画像のサムネイル' %>
             <% end %><br>
           </div>
           <div>
             <%= f.radio_button :theme, 'option2.jpg', id: 'option2' %>
             <%= label_tag 'option2' do %>
-              <%= image_tag 'option2.jpg', alt: 'XX' %>
+              <%= image_tag 'option2.jpg', alt: '背景画像のサムネイル２つ目' %>
             <% end %><br>
           </div>
           <div>
             <%= f.radio_button :theme, 'option3.png', id: 'option3' %>
             <%= label_tag 'option3' do %>
-              <%= image_tag 'option3.jpg', alt: 'XX' %>
+              <%= image_tag 'option3.jpg', alt: '背景画像のサムネイル３つ目' %>
             <% end %>
           </div>
         </div>
@@ -149,4 +149,4 @@
     import "index";
   </script>
 
-</body>
+</div>

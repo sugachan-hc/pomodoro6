@@ -34,7 +34,8 @@ playButton.addEventListener("click", function () {
   const angle = circle.style.getPropertyValue("--angle");
   const color = circle.style.getPropertyValue("--color");
 
-  if (angle === "360deg" && color === "red") {
+  // 条件を満たすときのみメッセージを表示する
+  if (angle === "360deg" && color === "red" && displayMessage.checked) {
     createText();
   }
 
@@ -214,9 +215,9 @@ function openSettings() {
 
 // 応援メッセージを動的に作成する
 async function createText() {
-  const message1 = getElementValue('start_message1');
-  const message2 = getElementValue('start_message2');
-  const message3 = getElementValue('start_message3');
+  const message1 = getElementValue('setting_start_message1');
+  const message2 = getElementValue('setting_start_message2');
+  const message3 = getElementValue('setting_start_message3');
   const messages = [message1, message2, message3];
 
   const divText = document.createElement('div');
