@@ -155,6 +155,7 @@ function stop() {
 function setImage() {
   let bgImage;
   let selectedOption = document.querySelector('input[name="setting[theme]"]:checked').id;
+  const dirName = document.body.getAttribute('dir-name');
 
   switch (selectedOption) {
     case 'option1': bgImage = 'option1.jpg'; break;
@@ -164,7 +165,9 @@ function setImage() {
   }
 
   localStorage.setItem('bgImage', bgImage);
-  document.body.style.backgroundImage = `url(${bgImage})`;
+
+  const bgImagePath = `${dirName}/${bgImage}`;
+  document.body.style.backgroundImage = `url(${bgImagePath})`;
 }
 
 // 設定反映
