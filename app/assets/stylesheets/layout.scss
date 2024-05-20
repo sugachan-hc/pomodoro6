@@ -63,6 +63,8 @@ body {
 .bg-image {
   background-size: cover;
   background-position: center;
+  background-color: lightgrey;
+  /* 画面遷移時一瞬白画面が表示される事象についての軽減策 */
 }
 
 .top {
