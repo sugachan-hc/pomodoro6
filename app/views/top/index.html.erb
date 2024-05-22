@@ -112,6 +112,12 @@
               <%= image_tag 'option3.jpg', alt: '背景画像のサムネイル３つ目' %>
             <% end %>
           </div>
+          <div>
+            <%= f.radio_button :theme, 'option4.png', id: 'option4' %>
+            <%= label_tag 'option4' do %>
+              <%= image_tag 'option4.jpg', alt: '背景画像のサムネイル４つ目' %>
+            <% end %>
+          </div>          
         </div>
         <%# ユーザがサインインしているときのみ表示 %>
         <% if user_signed_in? %>
