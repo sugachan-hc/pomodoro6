@@ -61,7 +61,7 @@ function countdown(pTime) {
 function swapMode() {
   if (currentMode == "Work") {
     if (numberWorkIntervals == 0) {
-      currentMode = "LongRest";
+      currentMode = "Long Rest";
       time = longBreak;
     } else {
       currentMode = "Rest";
@@ -70,9 +70,9 @@ function swapMode() {
   } else if (currentMode == "Rest") {
     currentMode = "Work";
     time = pomodoro;
-  } else if (currentMode == "LongRest") {
+  } else if (currentMode == "Long Rest") {
     if (numberWorkIntervals == 0) {
-      currentMode = "LongRest";
+      currentMode = "Long Rest";
 
     } else {
       currentMode = "Work";
@@ -111,7 +111,7 @@ function updateCountdown(pTime) {
       color = "#7BA932";
       angle = (pTime / shortBreak * 360) + 'deg';
 
-    } else if (currentMode == "LongRest") {
+    } else if (currentMode == "Long Rest") {
       color = "#FCAD00";
       angle = (pTime / pomodoro * 360) + 'deg';
     }
