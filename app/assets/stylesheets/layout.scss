@@ -64,7 +64,6 @@ body {
   background-size: cover;
   background-position: center;
   background-color: lightgrey;
-  /* 画面遷移時一瞬白画面が表示される事象についての軽減策 */
 }
 
 .top {
@@ -102,7 +101,7 @@ body {
   height: 300px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  --color: red;
+  --color: #E50A10;
   --angle: 180deg;
   background: conic-gradient(var(--color) 0,
       var(--color) var(--angle),
@@ -234,8 +233,8 @@ body {
 
 /* サブメニュー画面（スイッチ部） */
 .form-switch .form-check-input:checked {
-  background-color: green;
-  border-color: green;
+  background-color: #7BA932;
+  border-color: #7BA932;
 }
 
 .form-switch .form-check-input {
