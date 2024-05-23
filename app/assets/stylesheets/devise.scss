@@ -23,9 +23,14 @@
 }
 
 /* Error */
+#error_explanation {
+  padding: 1rem;
+}
+
 #error_explanation h2 {
   font-size: 1rem;
   font-weight: bold;
+  margin-bottom: .5rem;
 }
 
 #error_explanation ul li {

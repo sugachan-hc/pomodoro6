@@ -34,7 +34,8 @@ playButton.addEventListener("click", function () {
   const angle = circle.style.getPropertyValue("--angle");
   const color = circle.style.getPropertyValue("--color");
 
-  if (angle === "360deg" && color === "red") {
+  // 条件を満たすときのみメッセージを表示する
+  if (angle === "360deg" && color === "red" && displayMessage.checked) {
     createText();
   }
 
@@ -58,8 +59,6 @@ function countdown(pTime) {
 }
 
 function swapMode() {
-  console.log("numberWorkIntervals: ", numberWorkIntervals);
-  console.log("currentMode: ", currentMode);
   if (currentMode == "Work") {
     if (numberWorkIntervals == 0) {
       currentMode = "LongRest";
@@ -104,7 +103,6 @@ function updateCountdown(pTime) {
   } else {
     let color;
     let angle;
-    console.log("next currentMode", currentMode);
     if (currentMode == "Work") {
       color = "red";
       angle = (pTime / pomodoro * 360) + 'deg';
@@ -157,6 +155,7 @@ function stop() {
 function setImage() {
   let bgImage;
   let selectedOption = document.querySelector('input[name="setting[theme]"]:checked').id;
+  const dirName = document.body.getAttribute('dir-name');
 
   switch (selectedOption) {
     case 'option1': bgImage = 'option1.jpg'; break;
@@ -166,7 +165,9 @@ function setImage() {
   }
 
   localStorage.setItem('bgImage', bgImage);
-  document.body.style.backgroundImage = `url(${bgImage})`;
+
+  const bgImagePath = `${dirName}/${bgImage}`;
+  document.body.style.backgroundImage = `url(${bgImagePath})`;
 }
 
 // 設定反映
@@ -198,8 +199,6 @@ function applySettings() {
 
   clearInterval(interval);
   updateCountdown(time);
-
-  console.log("show popup");
 }
 
 function closeSettings() {
@@ -219,9 +218,9 @@ function openSettings() {
 
 // 応援メッセージを動的に作成する
 async function createText() {
-  const message1 = getElementValue('start_message1');
-  const message2 = getElementValue('start_message2');
-  const message3 = getElementValue('start_message3');
+  const message1 = getElementValue('setting_start_message1');
+  const message2 = getElementValue('setting_start_message2');
+  const message3 = getElementValue('setting_start_message3');
   const messages = [message1, message2, message3];
 
   const divText = document.createElement('div');
@@ -249,40 +248,53 @@ async function createText() {
 }
 
 window.onload = function () {
-  var playButton = document.querySelector('.play');
+  const playButton = document.querySelector('.play');
   playButton.addEventListener('click', function () {
     play(); // play 関数を呼び出す
   });
 
-  var pauseButton = document.querySelector('.pause');
+  const pauseButton = document.querySelector('.pause');
   pauseButton.addEventListener('click', function () {
     pause(); // pause 関数を呼び出す
   });
 
-  var stopButton = document.querySelector('.stop');
+  const stopButton = document.querySelector('.stop');
   stopButton.addEventListener('click', function () {
     stop(); // stop 関数を呼び出す
   });
 
-  var openButton = document.querySelector('.open');
+  const openButton = document.querySelector('.open');
   openButton.addEventListener('click', function () {
     openSettings(); // openSettings 関数を呼び出す
   });
 
-  var closeButton = document.querySelector('.close');
+  const closeButton = document.querySelector('.close');
   closeButton.addEventListener('click', function () {
     closeSettings(); // closeSettings 関数を呼び出す
   });
 
-  var applyButton = document.querySelector('.apply');
+  const applyButton = document.querySelector('.apply');
   applyButton.addEventListener('click', function () {
     applySettings(); // applySettings 関数を呼び出す
   });
 
   // 画面ロードした際に実行したい関数
-  // setImage();
   applySettings();
 };
+
+// 追加: 適用ボタン(DB更新なし)押下時、Flashを表示する
+const applyButton = getElement('apply-button');
+const noticeNoLogin = getElement('notice-no-login');
+
+applyButton.addEventListener('click', () => {
+  noticeNoLogin.style.display = "block";
+
+  setTimeout(() => {
+    $(noticeNoLogin).fadeOut('slow', function () {
+      $(this).hide();
+    });
+  }, 5000);
+});
 
 //for debug
 // openSettings();

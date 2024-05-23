@@ -19,7 +19,7 @@ body {
 
 /* フォーム(Top・Devise共通) */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .form-input {
@@ -41,7 +41,8 @@ body {
   width: 100%;
 }
 
-.notice {
+.notice,
+.notice-no-login {
   position: absolute;
   top: 16px;
   left: 50%;
@@ -52,6 +53,10 @@ body {
   color: white;
   background-color: gray;
   border-color: gray;
+}
+
+.notice-no-login {
+  display: none;
 }
 
 /* メイン画面(全体) */
@@ -69,6 +74,14 @@ body {
 }
 
 /* メイン画面(時間表示部) */
+.timer,
+.mode {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
 .timer {
   font-size: 4.5rem;
   line-height: 1;
@@ -204,18 +217,17 @@ body {
 }
 
 /* サブメニュー画面（アコーディオン） */
-.accordion {
-  margin-bottom: 1.5rem;
-}
-
 .accordion-button {
+  padding-top: 0px;
   padding-left: 0px;
+  font-weight: 600;
 }
 
 /* サブメニュー画面（ボタン部） */
 .btn {
   display: block;
   margin: 0 auto;
+  font-weight: bold;
 }
 
 /* サブメニュー画面（スイッチ部） */
