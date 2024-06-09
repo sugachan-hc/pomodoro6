@@ -40,10 +40,11 @@
         let bgImage = localStorage.getItem('bgImage');
         bgImage = bgImage || 'option1.jpg';
 
-        const bgImagePath = `${dirName}/${bgImage}`;
+        // const bgImagePath = `${dirName}/${bgImage}`;
+        const bgImagePath = `${bgImage}`;
 
         document.body.style.backgroundImage = `url(${bgImagePath})`;
-        console.log(bgImagePath);
+        console.log(`url(${bgImagePath})`);
       };
     </script>
   </body>
