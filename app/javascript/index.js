@@ -35,7 +35,7 @@ playButton.addEventListener("click", function () {
   const color = circle.style.getPropertyValue("--color");
 
   // 条件を満たすときのみメッセージを表示する
-  if (angle === "360deg" && color === "red" && displayMessage.checked) {
+  if (angle === "360deg" && color === "#E50A10" && displayMessage.checked) {
     createText();
   }
 
@@ -61,7 +61,7 @@ function countdown(pTime) {
 function swapMode() {
   if (currentMode == "Work") {
     if (numberWorkIntervals == 0) {
-      currentMode = "LongRest";
+      currentMode = "Long Rest";
       time = longBreak;
     } else {
       currentMode = "Rest";
@@ -70,9 +70,9 @@ function swapMode() {
   } else if (currentMode == "Rest") {
     currentMode = "Work";
     time = pomodoro;
-  } else if (currentMode == "LongRest") {
+  } else if (currentMode == "Long Rest") {
     if (numberWorkIntervals == 0) {
-      currentMode = "LongRest";
+      currentMode = "Long Rest";
 
     } else {
       currentMode = "Work";
@@ -104,15 +104,15 @@ function updateCountdown(pTime) {
     let color;
     let angle;
     if (currentMode == "Work") {
-      color = "red";
+      color = "#E50A10";
       angle = (pTime / pomodoro * 360) + 'deg';
 
     } else if (currentMode == "Rest") {
-      color = "blue";
+      color = "#7BA932";
       angle = (pTime / shortBreak * 360) + 'deg';
 
-    } else if (currentMode == "LongRest") {
-      color = "green";
+    } else if (currentMode == "Long Rest") {
+      color = "#FCAD00";
       angle = (pTime / pomodoro * 360) + 'deg';
     }
 
@@ -161,6 +161,7 @@ function setImage() {
     case 'option1': bgImage = 'option1.jpg'; break;
     case 'option2': bgImage = 'option2.jpg'; break;
     case 'option3': bgImage = 'option3.jpg'; break;
+    case 'option4': bgImage = 'option4.jpg'; break;
     default: bgImage = 'option1.jpg';
   }
 

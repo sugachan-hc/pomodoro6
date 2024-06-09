@@ -63,6 +63,7 @@ body {
 .bg-image {
   background-size: cover;
   background-position: center;
+  background-color: lightgrey;
 }
 
 .top {
@@ -100,7 +101,7 @@ body {
   height: 300px;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  --color: red;
+  --color: #E50A10;
   --angle: 180deg;
   background: conic-gradient(var(--color) 0,
       var(--color) var(--angle),
@@ -152,7 +153,7 @@ body {
 .settings-list {
   width: 33vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -33vw;
   padding: 20px;
@@ -232,8 +233,8 @@ body {
 
 /* サブメニュー画面（スイッチ部） */
 .form-switch .form-check-input:checked {
-  background-color: green;
-  border-color: green;
+  background-color: #7BA932;
+  border-color: #7BA932;
 }
 
 .form-switch .form-check-input {
