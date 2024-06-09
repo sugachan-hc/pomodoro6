@@ -8,6 +8,8 @@ echo "installing bundle"
 bundle install
 
 echo "precompiling assets"
+# add 
+bundle exec rails assets:clobber
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 
