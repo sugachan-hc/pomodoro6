@@ -168,7 +168,8 @@ function setImage() {
   localStorage.setItem('bgImage', bgImage);
 
   const bgImagePath = `${dirName}/${bgImage}`;
-  document.body.style.backgroundImage = `url(${bgImagePath})`;
+  // document.body.style.backgroundImage = `url(${bgImagePath})`;
+  document.body.style.backgroundImage = `url(${bgImage})`;
 }
 
 // 設定反映
